@@ -48,7 +48,7 @@ with the following json data as a body:
 ```
 http://localhost:8000/api/token/refresh/
 
-```. 
+```
 This will provide you with a new access token.
 - Send a POST request to:
 
