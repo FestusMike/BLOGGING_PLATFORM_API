@@ -15,8 +15,7 @@ class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = (AllowAny,)
 
 class PostViewSet(viewsets.ModelViewSet):
-    #CRUD Posts
-    
+    #CRUD Posts    
     queryset = Post.objects.all()
 
     def get_queryset(self):
