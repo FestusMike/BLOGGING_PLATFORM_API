@@ -27,7 +27,7 @@ This will clone the remote repository to your local machine and create a new dir
 
 ## To register as a new user(Postman will be used as an example):
 
-- Send a POST request to 
+- Send a POST request to: 
 ```
 http://localhost:8000/api/register
 ``` 
@@ -46,7 +46,7 @@ with the following json data as a body:
 http://localhost:8000/api/token/refresh/
 ```. 
 This will provide you with a new access token.
-- Send a POST request to 
+- Send a POST request to:
 ```
 http://localhost:8000/api/blog/categories/
 ``` with the following json data as a body:
