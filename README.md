@@ -14,6 +14,7 @@
 - Open your terminal and paste the following code: 
 ```
 git clone https://github.com/FestusMike/BLOGGING_WEB_APP_API_ENDPOINTS.git
+
 ```. 
 This will clone the remote repository to your local machine and create a new directory which carries the name of repository you just cloned.
 - Change into the new directory with the following command `cd BLOGGING_WEB_APP_API_ENDPOINTS`
@@ -30,8 +31,10 @@ This will clone the remote repository to your local machine and create a new dir
 - Send a POST request to: 
 ```
 http://localhost:8000/api/register
+
 ``` 
 with the following json data as a body: 
+
 ``` 
     {
     "email" : "your email",
@@ -44,11 +47,14 @@ with the following json data as a body:
 - Include the refresh token in the `form-data` section with `refresh` as the `key` and the `value` as `<refresh_token>`. This will be used to refresh your access token when the duration expires. To Refresh an access token, Send a POST request to : 
 ```
 http://localhost:8000/api/token/refresh/
+
 ```. 
 This will provide you with a new access token.
 - Send a POST request to:
+
 ```
 http://localhost:8000/api/blog/categories/
+
 ``` with the following json data as a body:
 
 ``` 
