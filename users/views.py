@@ -3,6 +3,7 @@ from rest_framework import status
 from rest_framework.generics import GenericAPIView, RetrieveUpdateAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
+from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import CustomUserSerializer, UserRegistrationSerializer, UserLoginSerializer, ProfileSerializer
 from .models import Profile
@@ -31,7 +32,6 @@ class UserLoginAPIView(GenericAPIView):
         serializer =self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data
-        serializer = CustomUserSerializer(user)
         token = RefreshToken.for_user(user)
         response_body = {"refresh": str(token),
                           "access": str(token.access_token)}
