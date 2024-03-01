@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'blog',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
+    'oauth2_provider',
+    'social_django',
+    'drf_social_oauth2',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -63,6 +66,8 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES" : (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
         "rest_framework.authentication.SessionAuthentication",
+        "oauth2_provider.contrib.rest_framework.OAuth2Authentication",
+        "drf_social_oauth2.authentication.SocialAuthentication",
     ),
 }
 
@@ -107,6 +112,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -147,6 +154,20 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'drf_social_oauth2.backends.DjangoOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get("CLIENT_ID")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get("CLIENT_SECRET")
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+    'https://www.googleapis.com/auth/userinfo.email',
+    'https://www.googleapis.com/auth/userinfo.profile'
+] 
 
 
 # Internationalization
